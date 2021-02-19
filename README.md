@@ -9,7 +9,7 @@
 
 Run and Save C++ CGI Linux:
 ```CPP
-sudo g++ -o /usr/lib/cgi-bin/example-cpp example-cpp.c
+sudo g++ -o /usr/lib/cgi-bin/example-cpp example-cpp.cpp
 ```
 
 WLS2 Access Link: http://localhost/cgi-bin/example-cpp
