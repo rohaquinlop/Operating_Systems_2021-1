@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+#include <unistd.h>
 using namespace std;
 
 int main(){
@@ -27,8 +27,10 @@ int main(){
   - Cantidad de memoria de la maquina
   - Total de interrupciones ejecutadas
   */
+  int cores = sysconf(_SC_NPROCESSORS_ONLN); //Command to check number of processors in Linux system.
 
   cout << "<h1>System Information</h1>" << endl;
+  cout << "<tr><td>" << "La cantidad de procesadores del sistema es de " << cores << "." << "</td></tr>";  
   
   cout << "</body>" << endl;
   cout << "</html>" << endl;
