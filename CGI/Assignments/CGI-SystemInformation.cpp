@@ -53,7 +53,27 @@ int main(){
   string availableRAM = getCommandAns("grep MemAvailable /proc/meminfo");//Command to call the function and get the output of linux command "grep MemAvailable /proc/meminfo".(Available RAM memory)
   totalRAM.erase(0,9); // Erase part of the output that is not important.
   availableRAM.erase(0,13); // Erase part of the output that is not important.
+  string interruptsChain = getCommandAns("cat /proc/stat"); //Command to call the function and get the output of linux command "cat /proc/stat".(Information about interruptions)
+  size_t found = interruptsChain.find("intr");//Position where the total interruptions identifier is (identifier = intr).
 
+  //String processing for interruptions number.
+  int spaces = 0; 
+  string ans = ""; //Empty string to save the total specific interruptions number.
+
+  //Loop used to extract the total specific interruptions number.
+  for(found; found < interruptsChain.size(); found++){
+    if(interruptsChain[found] == ' '){
+      spaces += 1;
+      if(spaces == 2){
+        break;
+      }
+    }
+    else{
+      if(spaces == 1){
+        ans += interruptsChain[found];
+      }
+    }
+  }
                                                                               /*HTML instructions*/
 
   cout << "<center>";
@@ -61,10 +81,12 @@ int main(){
     cout << "<tr><td>" << "La cantidad de procesadores del sistema es de " << cores << "." << "</td></tr>";
     cout << "<br>";
     cout << "<tr><td>" << "La cantidad de procesos corriendo en el sistema es de " << processes << "." << "</td></tr>";
-    cout << "<br>",
+    cout << "<br>";
     cout << "<tr><td>" << "La cantidad de memoria RAM total en el sistema es de " << totalRAM << "." << "</td></tr>";
-    cout << "<br>",
+    cout << "<br>";
     cout << "<tr><td>" << "La cantidad de memoria RAM disponible en el sistema es de " << availableRAM << "." << "</td></tr>";
+    cout << "<br>";
+    cout << "<tr><td>" << "La cantidad total de interrupciones ejecutadas es de" << ans << "." << "</td></tr>";    
   cout << "</center>";
 
 
