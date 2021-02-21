@@ -2,6 +2,24 @@
 #include <unistd.h>
 using namespace std;
 
+//This function allows to capture the output of a linux command in the terminal and use it.
+string getCommandAns(string cmd){
+  string data;
+  FILE * stream;
+  const int max_buffer = 256;
+  char buffer[max_buffer];
+  cmd.append(" 2>&1");
+
+  stream = popen(cmd.c_str(), "r");
+  if(stream){
+    while(!feof(stream)){
+      if(fgets(buffer, max_buffer, stream) != NULL) data.append(buffer);
+    }
+    pclose(stream);
+  }
+  return data;
+}
+
 int main(){
   //HTML Basic Structure, created by Robin Quintero and Jhon Londoño
 
@@ -28,9 +46,13 @@ int main(){
   - Total de interrupciones ejecutadas
   */
   int cores = sysconf(_SC_NPROCESSORS_ONLN); //Command to check number of processors in Linux system.
+  string processes = getCommandAns("ps -e | wc -l"); //Command to call the function and get the output of linux command "ps -e | wc -l".
 
   cout << "<h1>System Information</h1>" << endl;
-  cout << "<tr><td>" << "La cantidad de procesadores del sistema es de " << cores << "." << "</td></tr>";  
+  cout << "<tr><td>" << "La cantidad de procesadores del sistema es de " << cores << "." << "</td></tr>";
+  cout << "<br>";
+  cout << "<tr><td>" << "La cantidad de procesos corriendo en el sistema es de " << processes << "." << "</td></tr>";
+  
   
   cout << "</body>" << endl;
   cout << "</html>" << endl;
