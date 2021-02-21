@@ -46,12 +46,17 @@ int main(){
   - Total de interrupciones ejecutadas
   */
   int cores = sysconf(_SC_NPROCESSORS_ONLN); //Command to check number of processors in Linux system.
-  string processes = getCommandAns("ps -e | wc -l"); //Command to call the function and get the output of linux command "ps -e | wc -l".
+  string processes = getCommandAns("ps -e | wc -l"); //Command to call the function and get the output of linux command "ps -e | wc -l". (Number of processes running)
+  string memory = getCommandAns("grep MemTotal /proc/meminfo"); //Command to call the function and get the output of linux command "grep MemTotal /proc/meminfo".(Available memory)
+  memory.erase(0,9); // Erase part of the output that is not important.
 
   cout << "<h1>System Information</h1>" << endl;
   cout << "<tr><td>" << "La cantidad de procesadores del sistema es de " << cores << "." << "</td></tr>";
   cout << "<br>";
   cout << "<tr><td>" << "La cantidad de procesos corriendo en el sistema es de " << processes << "." << "</td></tr>";
+  cout << "<br>",
+  cout << "<tr><td>" << "La cantidad de memoria disponible en el sistema es de " << memory << "." << "</td></tr>";
+
   
   
   cout << "</body>" << endl;
