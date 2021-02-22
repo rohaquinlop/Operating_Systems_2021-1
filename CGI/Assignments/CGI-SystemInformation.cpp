@@ -77,16 +77,22 @@ int main(){
                                                                               /*HTML instructions*/
 
   cout << "<center>";
-    cout << "<h1>System Information</h1>" << endl;
+    cout << "<h1>Información del Sistema</h1>" << endl;
+    
+    cout << "<h2>Número de núcleos</h2>" << endl;
     cout << "<tr><td>" << "La cantidad de procesadores del sistema es de " << cores << "." << "</td></tr>";
     cout << "<br>";
+    cout << "<h2>Cantidad de procesos corriendo</h2>" << endl;
     cout << "<tr><td>" << "La cantidad de procesos corriendo en el sistema es de " << processes << "." << "</td></tr>";
     cout << "<br>";
+    cout << "<h2>Memoria RAM</h2>" << endl;
     cout << "<tr><td>" << "La cantidad de memoria RAM total en el sistema es de " << totalRAM << "." << "</td></tr>";
     cout << "<br>";
+    cout << "<h2>Memoria RAM Disponible</h2>" << endl;
     cout << "<tr><td>" << "La cantidad de memoria RAM disponible en el sistema es de " << availableRAM << "." << "</td></tr>";
     cout << "<br>";
-    cout << "<tr><td>" << "La cantidad total de interrupciones ejecutadas es de" << ans << "." << "</td></tr>";    
+    cout << "<h2>Cantidad de Interrupciones</h2>" << endl;
+    cout << "<tr><td>" << "La cantidad total de interrupciones ejecutadas es de " << ans << "." << "</td></tr>";    
   cout << "</center>";
 
 
