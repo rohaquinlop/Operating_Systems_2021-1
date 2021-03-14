@@ -41,6 +41,14 @@ int main(){
     cout << "- - -| Ha ocurrido un error al ejecutar pipe |- - -" << endl;
   }
   else{
+    cout << "Ingrese el directorio #1:\t";
+    cin >> dir0;
+    //write(fd[1], dir0.c_str(), dir0.length()+1);
+
+    cout << "Ingrese el directorio #2:\t";
+    cin >> dir1;
+    //write(fd[1], dir1.c_str(), dir1.length()+1);
+    
     int f = fork();
     if( f < 0){
       cout << "- - -| Ha ocurrido un erorr al ejecutar el fork |- - -" << endl;
@@ -50,17 +58,9 @@ int main(){
       //Es el hijo
       //Leer el directorio, luego tomar los archivos del directorio (*.c, *.h)
       // ls -la *.c *.h
-
-      cout << "Ingrese el directorio #1:\t";
-      cin >> dir0;
-      write(fd[1], dir0.c_str(), dir0.length()+1);
-
-      cout << "Ingrese el directorio #2:\t";
-      cin >> dir1;
-      write(fd[1], dir1.c_str(), dir1.length()+1);
       
       //Ejecutar el comando sobre el directorio #1
-      string command = "cd " + dir0 + " && ls -la *.cpp";
+      string command = "cd " + dir0 + " && ls -la *.c *.h";
 
       vector<string> ls = exec(command);
 
