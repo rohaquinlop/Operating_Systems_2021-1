@@ -30,6 +30,18 @@ vector<string> exec(string command) {
    return ans;
 }
 
+vector<string> parseInput(string s){
+  vector<string> v;
+  istringstream ss(s);
+  string aux;
+
+  while( ss >> aux ){
+    v.push_back(aux);
+  }
+
+  return v;
+}
+
 int main(){
   int fd[2];
   string s, dir0, dir1;
@@ -91,8 +103,9 @@ int main(){
           s += c;
         }
         else{
-          cout << getpid()  << " Salida:\t" << s << endl;
-          //cout << s << endl;
+          if( s != "ls: cannot access '*.c': No such file or directory" and s != "ls: cannot access '*.h': No such file or directory" ){
+            vector<string> vs = parseInput(s);
+          }
           s = "";
         }
       }
