@@ -119,13 +119,16 @@ int main(){
           s += c;
         }
         else{
-          if( s != "ls: cannot access '*.c': No such file or directory" and s != "ls: cannot access '*.h': No such file or directory" ){
+          if( s != "ls: cannot access '*.c': No such file or directory" and s != "ls: cannot access '*.h': No such file or directory" and s != "" ){
             vector<string> vs = parseInput(s);
             string fileName = vs[vs.size()-1];
+
+            string notFound = "find: ‘" + fileName + "’: No such file or directory";
 
             string command = exec1("cd " + dir1 + "&& find " + fileName);
 
             // cout << command << endl;
+            // cout << notFound << endl;
           }
           s = "";
         }
