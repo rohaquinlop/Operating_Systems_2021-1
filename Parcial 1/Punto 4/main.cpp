@@ -30,6 +30,30 @@ vector<string> exec(string command) {
    return ans;
 }
 
+string exec1(string command){
+   char buffer[1024];
+   string ans = "";
+
+   // Open pipe to file
+   FILE* pipe = popen(command.c_str(), "r");
+   if (!pipe) {
+      return ans;
+   }
+
+   // read till end of process:
+   while (!feof(pipe)) {
+
+      // use buffer to read and add to result
+      if (fgets(buffer, 1024, pipe) != NULL){
+        ans = buffer;
+        ans.erase(remove(ans.begin(), ans.end(), '\n'), ans.end());
+        return ans;
+      }
+   }
+
+   pclose(pipe);
+}
+
 vector<string> parseInput(string s){
   vector<string> v;
   istringstream ss(s);
@@ -80,14 +104,6 @@ int main(){
         write(fd[1], s.c_str(), s.length()+1);
       }
 
-      /*
-      for(int i = 0; i < 3; ++i){
-        cout << getpid() << " i ->" << i << ": ";
-        cin >> s;
-        write(fd[1], &s, sizeof(s));
-        //sleep(3);
-      }
-      */
       close(fd[1]);
       wait(NULL);
     }
@@ -105,6 +121,11 @@ int main(){
         else{
           if( s != "ls: cannot access '*.c': No such file or directory" and s != "ls: cannot access '*.h': No such file or directory" ){
             vector<string> vs = parseInput(s);
+            string fileName = vs[vs.size()-1];
+
+            string command = exec1("cd " + dir1 + "&& find " + fileName);
+
+            // cout << command << endl;
           }
           s = "";
         }
