@@ -52,6 +52,7 @@ string exec1(string command){
    }
 
    pclose(pipe);
+   return ans;
 }
 
 vector<string> parseInput(string s){
@@ -123,12 +124,22 @@ int main(){
             vector<string> vs = parseInput(s);
             string fileName = vs[vs.size()-1];
 
-            string notFound = "find: ‘" + fileName + "’: No such file or directory";
+            string notFound = "ls: cannot access '" + fileName + "': No such file or directory";
 
-            string command = exec1("cd " + dir1 + "&& find " + fileName);
+            string command = exec1("cd " + dir1 + "&& ls -la " + fileName);
 
-            // cout << command << endl;
-            // cout << notFound << endl;
+            if(command == ""){
+              //No encontró el archivo en el segundo directorio
+              //cout << notFound << endl;
+
+              string cp = "cp " + dir0 + "/" + fileName + " " + dir1;
+
+              system((char*)cp.c_str());
+            }
+            else{
+              //Encontró el archivo
+              cout << "Lo encontró: " << command << endl;
+            }
           }
           s = "";
         }
