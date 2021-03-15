@@ -120,25 +120,36 @@ int main(){
           s += c;
         }
         else{
-          if( s != "ls: cannot access '*.c': No such file or directory" and s != "ls: cannot access '*.h': No such file or directory" and s != "" ){
-            vector<string> vs = parseInput(s);
-            string fileName = vs[vs.size()-1];
-
-            string notFound = "ls: cannot access '" + fileName + "': No such file or directory";
+          if( s != "" ){
+            vector<string> parseDir0 = parseInput(s);
+            string fileName = parseDir0[parseDir0.size()-1];
 
             string command = exec1("cd " + dir1 + "&& ls -la " + fileName);
 
             if(command == ""){
               //No encontró el archivo en el segundo directorio
-              //cout << notFound << endl;
 
               string cp = "cp " + dir0 + "/" + fileName + " " + dir1;
 
               system((char*)cp.c_str());
             }
             else{
-              //Encontró el archivo
-              cout << "Lo encontró: " << command << endl;
+              //Encontró el archivo en el segundo directorio
+
+              // Hay que comparar las fechas de modificación de ambos archivos, y si la fecha de modificación del archivo en el primer
+              // directorio es más reciente que en el segundo directorio entonces se copia
+
+              string condition = exec1("[ " + dir0 + "/" + fileName + " -nt " + dir1 + "/" + fileName + " ] && echo \"yes\"");
+
+              if(condition == "yes"){
+                //Se cumple que el archivo en el primer directorio es más reciente que el archivo en el segundo directorio
+
+                //Se elimina el archivo en el segundo directorio y se copia el archivo del primer directorio al segundo directorio
+                
+                string cp ="rm "+ dir1 + "/" + fileName + " && cp " + dir0 + "/" + fileName + " " + dir1;
+                system((char*)cp.c_str());
+              }
+
             }
           }
           s = "";
