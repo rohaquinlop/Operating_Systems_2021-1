@@ -27,6 +27,12 @@ public:
   int getCompletion();
 
   //setters
+  void setPID(int a);
+  void setPriority(int a);
+  void setArrival(int a);
+  void setBurst(int a);
+  void setResponse(int a);
+  void setCompletion(int a);
 
 };
 #endif

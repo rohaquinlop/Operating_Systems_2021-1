@@ -34,3 +34,28 @@ int Process::getResponse(){
 int Process::getCompletion(){
   return this->completion;
 }
+
+//Setters
+void Process::setPID(int a){
+  this->pid = a;
+}
+
+void Process::setPriority(int a){
+  this->priority = a;
+}
+
+void Process::setArrival(int a){
+  this->arrival = a;
+}
+
+void Process::setBurst(int a){
+  this->burst = a;
+}
+
+void Process::setResponse(int a){
+  this->response = a;
+}
+
+void Process::setCompletion(int a){
+  this->completion = a;
+}
