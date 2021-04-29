@@ -1,0 +1,115 @@
+# Planning for SO second midterm
+
+### Data Structures
+#### Process: storage of a process properties | G
+    - pid
+    - priority
+    - arrival time
+    - burst time
+    - remaining time
+    - response time
+    - completion time
+
+#### schedule: storage of processes, is a priority queue | S
+    - processes
+    - arrival time line
+    - ready queue
+    - compare function
+    - elapsed time
+
+### Functions
+
+#### turnAroundT: | G
+Input:
+    - process
+Output:
+    - Time from moment of arrival to ready queue to completion moment of a
+    completed process.
+Description:
+turn around time = completion time - arrival time
+
+#### waitT: | S
+Input:
+    - process
+Output:
+    - Time from arrival to completion that wasn't execution time, of a
+    completed process
+Description:
+wait time = turn around time - burst time
+
+#### responseT: | G
+Input:
+    - process
+Output:
+    - Time from arrival to first time where CPU was given to the process.
+Description:
+responde time
+
+#### avgTurnAT: | S
+Input:
+    - schedule
+Output:
+    - average of turn around times of a sequence of processes completed.
+Description:
+avg(turnAroundT(processI))
+
+#### avgWaitT: | G
+Input:
+    - schedule
+Output:
+    - average of wait times of a sequence of processes completed.
+Description:
+avg(waitT(processI))
+
+#### avgResponseT: | S
+Input:
+    - schedule
+Output:
+    - average of response times of a sequence of processes completed.
+Description:
+avg(responseT(processI))
+
+### priorityFCFS: | G
+Input:
+    - process A
+    - process B
+Output:
+    - Value that represents the order of A and B from the FCFS perspective.
+Description:
+Priority is inversely proportional to arrival time.
+- -1    IF A priority is less than B priority.
+- 0     IF A priority is equal to B priority.
+- 1     IF A priority is greater than B priority.
+
+### prioritySJF: | S
+Input:
+    - process A
+    - process B
+Output:
+    - Value that represents the order of A and B from the SJF perspective.
+Description:
+Priority is inversely proportional to remaining time.
+- -1    IF A priority is less than B priority.
+- 0     IF A priority is equal to B priority.
+- 1     IF A priority is greater than B priority.
+
+### priorityP: | G
+Input:
+    - process A
+    - process B
+Output:
+    - Value that represents the order of A and B from the Priority perspective.
+Description:
+Priority is directly proportional to priority.
+- -1    IF A priority is less than B priority.
+- 0     IF A priority is equal to B priority.
+- 1     IF A priority is greater than B priority.
+
+### Processes
+
+#### caller: | G
+Input:
+    - schedule
+Description:
+By the elapsed time in the schedule, enqueue the process from the schedule that
+have already arrived into the ready queue.
