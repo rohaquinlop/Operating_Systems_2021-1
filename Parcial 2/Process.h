@@ -11,12 +11,22 @@ private:
   int completion; //final time
 
 public:
+  //constructor
   Process();
   Process(int a, int b, int c, int d, int e, int f);
+  //destructor
   ~Process();
 
+  //utility-functions
+  //getters
   int getPID();
+  int getPriority();
+  int getArrival();
+  int getBurst();
+  int getResponse();
+  int getCompletion();
+
+  //setters
 
 };
-
 #endif
