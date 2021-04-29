@@ -1,5 +1,6 @@
 #include "Process.h"
 
+//Constructor
 Process::Process(int a, int b, int c, int d, int e, int f){
   this->pid = a;
   this->priority = b;
@@ -9,8 +10,10 @@ Process::Process(int a, int b, int c, int d, int e, int f){
   this->completion = f;
 }
 
-//Getters
+//Destructor
+Process::~Process(){}
 
+//Getters
 int Process::getPID(){
   return this->pid;
 }
