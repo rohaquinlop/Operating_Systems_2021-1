@@ -19,7 +19,7 @@ int GanttChart::getMaxValue(){
 
 void GanttChart::draw(){
 
-  cout << left << setw(10) << "Process ID " << left << setw(10) << "| Time"
+  cout << left << setw(10) << "Process ID " << left << setw(10) << "| Time";
 
   for(Process* p : this->processes){
     //
