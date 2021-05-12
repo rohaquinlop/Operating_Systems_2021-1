@@ -9,6 +9,7 @@ private:
   int burst;      //time required to execute
   int response;   //time from arrival to the first time it started
   int completion; //final time
+  int turnAround; //completition time - arrival time
 
 public:
   //constructor
@@ -27,6 +28,7 @@ public:
   int getBurst();
   int getResponse();
   int getCompletion();
+  int getTurnAround();
 
   //setters
   void setPID(int a);
@@ -35,6 +37,7 @@ public:
   void setBurst(int a);
   void setResponse(int a);
   void setCompletion(int a);
+  void setTurnAround(int a);
 
 };
 #endif

@@ -70,3 +70,7 @@ void Process::setResponse(int a){
 void Process::setCompletion(int a){
   this->completion = a;
 }
+
+void Process::setTurnAround(int a){
+  this->turnAround = a;
+}
