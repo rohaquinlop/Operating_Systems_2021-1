@@ -13,7 +13,9 @@ private:
 public:
   //constructor
   Process();
-  Process(int a, int b, int c, int d, int e, int f);
+  Process(int _pid, int _priority, int _arrival, int _burst, int _response, int _completition);
+  Process(int _pid, int _priority, int _burst);
+
   //destructor
   ~Process();
 
