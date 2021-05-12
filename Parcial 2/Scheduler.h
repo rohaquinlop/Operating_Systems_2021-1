@@ -16,7 +16,8 @@ public:
   priority_queue<Process*, vector<Process*>, T> readyQueue;
 
   //Constructor
-  Scheduler();
+  Scheduler(vector<Process*> processes);
+  void startProcessing();
 
 };
 
