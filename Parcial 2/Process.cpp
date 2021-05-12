@@ -10,9 +10,10 @@ Process::Process(int _pid, int _priority, int _arrival, int _burst, int _respons
   this->completion = _completition;
 }
 
-Process::Process(int _pid, int _priority, int _burst){
+Process::Process(int _pid, int _priority, int _arrival, int _burst){
   this->pid = _pid;
   this->priority = _priority;
+  this->arrival = _arrival;
   this->burst = _burst;
 }
 
