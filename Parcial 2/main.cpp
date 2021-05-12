@@ -4,7 +4,6 @@
 #include "FCFS.h"
 #include "Priority.h"
 #include "SJF.h"
-#include "GanttChart.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -38,6 +37,10 @@ int main(){
   for(Process* p : processes){
     cout << p->getPID() << " " << p->getArrival() << " " << p->getPriority() << " " << p->getBurst() << endl;
   }
+
+  Scheduler<FCFS> *scheduler = new Scheduler<FCFS>(processes);
+  scheduler->startProcessing();
+  scheduler->drawGanttChart();
 
   return 0;
 }
