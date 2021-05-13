@@ -16,6 +16,8 @@ public:
   Process();
   Process(int _pid, int _priority, int _arrival, int _burst, int _response, int _completition);
   Process(int _pid, int _priority, int _arrival, int _burst);
+  //copy constructor
+  Process(Process& p);
 
   //destructor
   ~Process();

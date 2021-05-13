@@ -1,13 +1,13 @@
 #include "Process.h"
 
 //Constructor
-Process::Process(int _pid, int _priority, int _arrival, int _burst, int _response, int _completition){
+Process::Process(int _pid, int _priority, int _arrival, int _burst, int _response, int _completion){
   this->pid = _pid;
   this->priority = _priority;
   this->arrival = _arrival;
   this->burst = _burst;
   this->response = _response;
-  this->completion = _completition;
+  this->completion = _completion;
 }
 
 Process::Process(int _pid, int _priority, int _arrival, int _burst){
@@ -15,6 +15,15 @@ Process::Process(int _pid, int _priority, int _arrival, int _burst){
   this->priority = _priority;
   this->arrival = _arrival;
   this->burst = _burst;
+}
+
+Process::Process(Process& p){
+  this->pid = p.pid;
+  this->priority = p.priority;
+  this->arrival = p.arrival;
+  this->burst = p.burst;
+  this->response = p.response;
+  this->completion = p.completion;
 }
 
 
