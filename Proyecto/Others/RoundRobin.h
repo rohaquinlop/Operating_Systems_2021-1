@@ -11,6 +11,10 @@ public:
 
   //Constructor
   RoundRobin(int _quantum, vector<Process*> processes);
+
+  //Functions
+  using Scheduler<FCFS>::drawGanttChart;
+  void startProcessing();
 };
 
 #endif

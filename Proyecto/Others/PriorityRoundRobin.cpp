@@ -1,10 +1,10 @@
-#include "RoundRobin.h"
+#include "PriorityRoundRobin.h"
 
-RoundRobin::RoundRobin(int _quantum, vector<Process*> processes) : Scheduler<FCFS>(processes) {
+PriorityRoundRobin::PriorityRoundRobin(int _quantum, vector<Process*> processes) : Scheduler<PriorityRR>(processes) {
   this->quantum = _quantum;
 }
 
-void RoundRobin::startProcessing() {
+void PriorityRoundRobin::startProcessing() {
   int i = 0;
   bool flag = 0;
 
