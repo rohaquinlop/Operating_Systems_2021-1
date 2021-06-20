@@ -10,7 +10,6 @@
 typedef struct
 {
 	int T[7],instance,alive;
-
 }task;
 
 #define IDLE_TASK_ID 1023   // When there is no process running
